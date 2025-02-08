@@ -9,8 +9,6 @@ This project automates the process of fetching, storing, analyzing, and visualiz
 - Generates **visualizations** using `Matplotlib` and `NetworkX`.
 
 ---
-
-## 📂 Project Structure
 ## ⚙️ Installation & Setup
 
 ### Install dependencies
