@@ -1,5 +1,7 @@
 import csv
 import time
+from difflib import SequenceMatcher
+
 import pandas as pd
 from typing import Any
 from sqlalchemy import create_engine
@@ -46,7 +48,7 @@ def get_most_common_user_properties(db_name: str, tables: list) -> list[dict[str
     conn.close()
     return most_common_user_properties
 
-def visualization_for_user_properties(user_properties: list):
+def visualization_for_user_properties(user_properties: list) -> None:
     properties = [item[0] for item in user_properties]
     values = [item[1] for item in user_properties]
     frequencies = [item[2] for item in user_properties]
@@ -71,11 +73,11 @@ def visualization_for_user_properties(user_properties: list):
     plt.show()
 
 
-def similarity(a, b):
+def similarity(a: str, b: str) -> SequenceMatcher.ratio:
     return difflib.SequenceMatcher(None, a, b).ratio()
 
 
-def fuzzy_and_strong_connection(db_name):
+def fuzzy_and_strong_connection(db_name: str) -> None:
     conn = sqlite3.connect(db_name)
     cursor = conn.cursor()
     cursor.execute("""
